@@ -1,17 +1,27 @@
 package com.banque.services.core.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name="Transactions")
 public class Transaction {
-    public Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private final String  txnId;
     private final String description;
     private final double amount;
     private final LocalDate date;
+    @ManyToOne
+    @JoinColumn(name = "compte_id")
     private final Compte source;
     private final TransactionType type;
+    @ManyToOne
     private final Compte destination;
 
-    public Transaction(Compte source, String description, double amount, LocalDate date, TransactionType type) {
+    public Transaction(String txnId, Compte source, String description, double amount, LocalDate date, TransactionType type) {
+        this.txnId = txnId;
         this.description = description;
         this.amount = amount;
         this.date = date;
@@ -20,7 +30,8 @@ public class Transaction {
         destination = source;
     }
 
-    public Transaction(String description, double amount, LocalDate date, Compte source, TransactionType type, Compte destination) {
+    public Transaction(String txnId, String description, double amount, LocalDate date, Compte source, TransactionType type, Compte destination) {
+        this.txnId = txnId;
         this.description = description;
         this.amount = amount;
         this.date = date;

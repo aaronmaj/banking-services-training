@@ -5,18 +5,29 @@ import javax.jws.WebService;
 import java.util.List;
 import com.banque.services.core.model.Client;
 import com.banque.services.core.model.Compte;
+import com.banque.services.core.model.Transaction;
+
 @WebService(name = "BanqueWebservice")
 public interface BanqueWebservice {
-    @WebMethod(operationName = "auth", exclude = false)
-    public abstract Client authentifier(long idClient, String password);
 
     @WebMethod(operationName = "comptes", exclude = false)
-    public abstract List<Compte> comptes(long idClient);
+    public abstract List<Compte> comptes();
 
     @WebMethod(operationName = "comptes", exclude = false)
-    public abstract List<Client> clients(long idClient);
+    public abstract List<Client> clients();
 
     @WebMethod(operationName = "virement", exclude = false)
-    public abstract void virement(long numeroDebit, long numeroCredit, double montant);
+    public abstract void virement(String numeroDebit, String numeroCredit, double montant, String description);
 
+    @WebMethod(operationName = "retrait", exclude = false)
+    public abstract double retrait(String numeroRetrait, double montant, String description);
+
+    @WebMethod(operationName = "depot", exclude = false)
+    public abstract void virement(String numeroDepot, double montant, String description);
+
+    @WebMethod(operationName = "depot", exclude = false)
+    public abstract double balance(String numeroCompte);
+
+    @WebMethod(operationName = "depot", exclude = false)
+    public abstract List<Transaction> historique(String  numeroCompte);
 }
