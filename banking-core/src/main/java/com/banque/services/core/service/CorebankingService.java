@@ -24,5 +24,7 @@ public class CorebankingService {
         return clientDao.findAll();
     }
 
-
+    public double balance(String numCompte){
+        return compteDao.findbyNum(numCompte).get().getSolde();
+    }
 }

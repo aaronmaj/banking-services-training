@@ -34,6 +34,17 @@ public class JpaCompteDao implements CompteDao {
         return Optional.of(compte);
     }
 
+    public Optional<Compte> findbyNum(String numcompte) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Compte compte = em.createQuery("select c from Compte c where c.numero =?1", Compte.class)
+                .setParameter(1,numcompte)
+                .getSingleResult();
+
+        em.getTransaction().commit();
+        em.close();
+        return Optional.of(compte);
+    }
     @Override
     public Integer save(Compte compte) {
         EntityManager em = emf.createEntityManager();

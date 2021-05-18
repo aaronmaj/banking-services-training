@@ -4,6 +4,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.banque.services.core.model.Client</class>
         <class>com.banque.services.core.model.Compte</class>
+        <class>com.banque.services.core.model.Transaction</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://18.116.202.27:3306/COREBANKING"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
