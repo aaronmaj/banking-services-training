@@ -12,10 +12,4 @@
           id="bankingService"
           implementor="com.banque.services.soap.BanqueWebserviceImpl"
           address="/banking" />
-        <bean id ="coreBankingService" class="com.banque.services.core.service.CorebankingService">
-                <constructor-arg index="0" ref="jpaClient"/>
-                <constructor-arg index="1" ref="jpaCompte"/>
-        </bean>
-        <bean id="jpaCompte" class="com.banque.services.core.persistence.jpa.JpaCompteDao"/>
-        <bean id="jpaClient" class="com.banque.services.core.persistence.jpa.JpaClientDao"/>
 </beans>

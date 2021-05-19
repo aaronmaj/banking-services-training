@@ -49,7 +49,7 @@ public class JpaCompteDao implements CompteDao {
     public Integer save(Compte compte) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        em.persist(compte);
+        em.merge(compte);
         em.getTransaction().commit();
         em.close();
         return compte.getId();

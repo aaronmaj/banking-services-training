@@ -1,6 +1,7 @@
 package com.banque.services.core.model;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 import java.time.LocalDate;
 
 @Entity
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @XmlTransient
     private Integer id;
     private String nom;
     private String prenom;
@@ -17,7 +19,7 @@ public class Client {
     private String codePostal;
     private String ville;
     private String sexe;
-    private LocalDate dateNaissance;
+
 
     public Integer getId() {
         return id;
@@ -83,11 +85,17 @@ public class Client {
         this.sexe = sexe;
     }
 
-    public LocalDate getDateNaissance() {
-        return dateNaissance;
-    }
-
-    public void setDateNaissance(LocalDate dateNaissance) {
-        this.dateNaissance = dateNaissance;
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", cni='" + cni + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", codePostal='" + codePostal + '\'' +
+                ", ville='" + ville + '\'' +
+                ", sexe='" + sexe + '\'' +
+                '}';
     }
 }

@@ -14,22 +14,26 @@ import java.util.List;
 @XmlSeeAlso(AuthenticationHeader.class)
 public class BanqueWebserviceImpl implements BanqueWebservice{
 
-    @Autowired
     private CorebankingService corebankingService;
-
+    {
+        corebankingService = new CorebankingService();
+    }
     @Override
-    public void ajouterClient(Client client) {
+    public String ajouterClient(Client client) {
         corebankingService.creerClient(client);
+        return "SUCCESS";
     }
 
     @Override
-    public void creerCompteRequest(Compte compte) {
+    public String creerCompte(Compte compte) {
         corebankingService.creerComptet(compte);
+        return "SUCCESS";
     }
 
     @Override
     public List<Compte> comptes(AuthenticationHeader  authenticationHeader) {
         return corebankingService.comptes();
+
     }
 
     @Override
@@ -38,8 +42,8 @@ public class BanqueWebserviceImpl implements BanqueWebservice{
     }
 
     @Override
-    public void virement(String numeroDebit, String numeroCredit, double montant, String description,AuthenticationHeader  authenticationHeader) {
-
+    public String virement(String numeroDebit, String numeroCredit, double montant, String description,AuthenticationHeader  authenticationHeader) {
+        return "";
     }
 
     @Override
@@ -48,8 +52,8 @@ public class BanqueWebserviceImpl implements BanqueWebservice{
     }
 
     @Override
-    public void depot(String numeroDepot, double montant, String description,AuthenticationHeader  authenticationHeader) {
-
+    public String depot(String numeroDepot, double montant, String description,AuthenticationHeader  authenticationHeader) {
+        return "SUCCESS";
     }
 
     @Override

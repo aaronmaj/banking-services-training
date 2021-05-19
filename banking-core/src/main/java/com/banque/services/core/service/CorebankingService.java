@@ -11,6 +11,11 @@ public class CorebankingService {
     private final JpaClientDao clientDao;
     private final JpaCompteDao compteDao;
 
+    public CorebankingService() {
+        clientDao = new JpaClientDao();
+        compteDao = new JpaCompteDao();
+    }
+
     public CorebankingService(JpaClientDao clientDao, JpaCompteDao compteDao) {
         this.clientDao = clientDao;
         this.compteDao = compteDao;

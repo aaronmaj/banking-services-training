@@ -39,7 +39,7 @@ public class JpaClientDao  implements ClientDao {
     public Integer save(Client client) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        em.persist(client);
+        em.merge(client);
         em.getTransaction().commit();
         em.close();
         return client.getId();
