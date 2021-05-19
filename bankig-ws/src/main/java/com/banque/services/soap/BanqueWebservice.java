@@ -10,9 +10,14 @@ import com.banque.services.core.model.Client;
 import com.banque.services.core.model.Compte;
 import com.banque.services.core.model.Transaction;
 
-@WebService(name = "BanqueWebservice", targetNamespace = "http://soap.services.banque.com")
+@WebService(name = "BanqueWebserviceSoapPort", targetNamespace = "http://soap.services.banque.com")
 @XmlSeeAlso(AuthenticationHeader.class)
 public interface BanqueWebservice {
+
+    @WebMethod(operationName = "ajouterClientRequest", exclude = false)
+    public abstract void ajouterClient(@WebParam(name = "client") @XmlElement(required = true)Client client);
+    @WebMethod(operationName = "creerCompteRequest", exclude = false)
+    public abstract void creerCompteRequest(@WebParam(name = "compte") @XmlElement(required = true)Compte compte);
 
     @WebMethod(operationName = "comptesRequest", exclude = false)
     public abstract List<Compte> comptes(@WebParam(header = true,name = "AuthHeader")AuthenticationHeader authenticationHeader);

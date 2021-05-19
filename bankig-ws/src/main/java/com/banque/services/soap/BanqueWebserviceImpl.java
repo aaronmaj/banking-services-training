@@ -10,12 +10,22 @@ import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import java.util.List;
 
-@WebService
+@WebService(portName = "BanqueWebserviceSoapPort", serviceName = "BanqueWebservice", targetNamespace = "http://soap.services.banque.com", endpointInterface = "com.banque.services.soap.BanqueWebservice")
 @XmlSeeAlso(AuthenticationHeader.class)
 public class BanqueWebserviceImpl implements BanqueWebservice{
 
     @Autowired
     private CorebankingService corebankingService;
+
+    @Override
+    public void ajouterClient(Client client) {
+        corebankingService.creerClient(client);
+    }
+
+    @Override
+    public void creerCompteRequest(Compte compte) {
+        corebankingService.creerComptet(compte);
+    }
 
     @Override
     public List<Compte> comptes(AuthenticationHeader  authenticationHeader) {

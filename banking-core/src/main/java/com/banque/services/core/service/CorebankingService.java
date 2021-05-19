@@ -27,4 +27,11 @@ public class CorebankingService {
     public double balance(String numCompte){
         return compteDao.findbyNum(numCompte).get().getSolde();
     }
+
+    public void creerClient(Client client){
+        clientDao.save(client);
+    }
+    public void creerComptet(Compte compte){
+        compteDao.save(compte);
+    }
 }
