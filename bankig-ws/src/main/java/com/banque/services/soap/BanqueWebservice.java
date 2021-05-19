@@ -15,11 +15,11 @@ import com.banque.services.core.model.Transaction;
 @XmlSeeAlso(AuthenticationHeader.class)
 public interface BanqueWebservice {
 
-    @WebMethod(operationName = "ajouterClient", exclude = false)
-    @WebResult(name="clientReponse")
+    @WebMethod(operationName = "requeteAjoutClient", exclude = false)
+    @WebResult(name="reponseAjoutClient")
     public abstract String ajouterClient(@WebParam(name = "client") @XmlElement(required = true)Client client);
-    @WebMethod(operationName = "creerCompte", exclude = false)
-    @WebResult(name="compteReponse")
+    @WebMethod(operationName = "requeteCreerCompte", exclude = false)
+    @WebResult(name="reponseCreerCompte")
     public abstract String creerCompte(@WebParam(name = "compte") @XmlElement(required = true)Compte compte);
 
     @WebMethod(operationName = "listeComptes", exclude = false)
