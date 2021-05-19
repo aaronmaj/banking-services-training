@@ -7,46 +7,48 @@ import com.banque.services.core.service.CorebankingService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.jws.WebService;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import java.util.List;
 
 @WebService
+@XmlSeeAlso(AuthenticationHeader.class)
 public class BanqueWebserviceImpl implements BanqueWebservice{
 
     @Autowired
     private CorebankingService corebankingService;
 
     @Override
-    public List<Compte> comptes() {
+    public List<Compte> comptes(AuthenticationHeader  authenticationHeader) {
         return corebankingService.comptes();
     }
 
     @Override
-    public List<Client> clients() {
+    public List<Client> clients(AuthenticationHeader  authenticationHeader) {
         return corebankingService.clients();
     }
 
     @Override
-    public void virement(String numeroDebit, String numeroCredit, double montant, String description) {
+    public void virement(String numeroDebit, String numeroCredit, double montant, String description,AuthenticationHeader  authenticationHeader) {
 
     }
 
     @Override
-    public double retrait(String numeroRetrait, double montant, String description) {
+    public double retrait(String numeroRetrait, double montant, String description,AuthenticationHeader  authenticationHeader) {
         return 0;
     }
 
     @Override
-    public void virement(String numeroDepot, double montant, String description) {
+    public void depot(String numeroDepot, double montant, String description,AuthenticationHeader  authenticationHeader) {
 
     }
 
     @Override
-    public double balance(String numeroCompte) {
+    public double balance(String numeroCompte,AuthenticationHeader  authenticationHeader) {
         return 0;
     }
 
     @Override
-    public List<Transaction> historique(String numeroCompte) {
+    public List<Transaction> historique(String numeroCompte,AuthenticationHeader  authenticationHeader) {
         return null;
     }
 }
