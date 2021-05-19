@@ -14,24 +14,24 @@ import com.banque.services.core.model.Transaction;
 @XmlSeeAlso(AuthenticationHeader.class)
 public interface BanqueWebservice {
 
-    @WebMethod(operationName = "comptes", exclude = false)
+    @WebMethod(operationName = "comptesRequest", exclude = false)
     public abstract List<Compte> comptes(@WebParam(header = true,name = "AuthHeader")AuthenticationHeader authenticationHeader);
 
-    @WebMethod(operationName = "clients", exclude = false)
+    @WebMethod(operationName = "clientsRequest", exclude = false)
     public abstract List<Client> clients(@WebParam(header = true,name = "AuthHeader")AuthenticationHeader authenticationHeader);
 
-    @WebMethod(operationName = "virement", exclude = false)
+    @WebMethod(operationName = "virementRequest", exclude = false)
     public abstract void virement(@WebParam(name = "numeroDebit") @XmlElement(required = true) String numeroDebit, @WebParam(name = "numeroCredit")@XmlElement(required = true)String numeroCredit, @WebParam(name = "montant")@XmlElement(required = true)double montant, @WebParam(name = "description")String description,@WebParam(header = true,name = "AuthHeader")AuthenticationHeader authenticationHeader);
 
-    @WebMethod(operationName = "retrait", exclude = false)
+    @WebMethod(operationName = "retraitRequest", exclude = false)
     public abstract double retrait(@WebParam(name = "numeroRetrait")@XmlElement(required = true)String numeroRetrait, @WebParam(name = "montant")@XmlElement(required = true)double montant, @WebParam(name = "description")String description, @WebParam(header = true,name = "AuthHeader")AuthenticationHeader authenticationHeader);
 
-    @WebMethod(operationName = "depot", exclude = false)
+    @WebMethod(operationName = "depotRequest", exclude = false)
     public abstract void depot(@WebParam(name = "numeroDepot")@XmlElement(required = true)String numeroDepot, @WebParam(name = "montant")@XmlElement(required = true)double montant, @WebParam(name = "description")String description,@WebParam(header = true,name = "AuthHeader")AuthenticationHeader authenticationHeader);
 
-    @WebMethod(operationName = "balance", exclude = false)
+    @WebMethod(operationName = "balanceRequest", exclude = false)
     public abstract double balance(@WebParam(name = "numeroCompte")@XmlElement(required = true)String numeroCompte,@WebParam(header = true,name = "AuthHeader")AuthenticationHeader authenticationHeader);
 
-    @WebMethod(operationName = "historique", exclude = false)
+    @WebMethod(operationName = "historiqueRequest", exclude = false)
     public abstract List<Transaction> historique(@WebParam(name = "numeroCompte")@XmlElement(required = true)String  numeroCompte,@WebParam(header = true,name = "AuthHeader")AuthenticationHeader authenticationHeader);
 }
