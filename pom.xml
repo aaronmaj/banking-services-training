@@ -13,6 +13,7 @@
         <module>banking-rest</module>
         <module>banking-core</module>
         <module>client-soap</module>
+        <module>client-rest</module>
     </modules>
 
     <properties>
