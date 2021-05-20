@@ -66,7 +66,7 @@
                             </sourceRoot>
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <wsdl>http://3.131.159.66:8080/banque-webservice/banking?wsdl</wsdl>
+                                    <wsdl>http://18.216.144.246:8080/banque-webservice/banking?wsdl</wsdl>
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>

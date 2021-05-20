@@ -13,7 +13,19 @@ public class BanqueSoapClient {
         banqueWebservice = new BanqueWebservice();
         soapPort = banqueWebservice.getBanqueWebserviceSoapPort();
     }
+    public void creerClient(){
+        Client client = new Client();
+        client.setNom("NDIKUMANA");
+        client.setPrenom("Philippe");
+        client.setAdresse("NYAKABIGA, Avenue de l'Imprimerie");
+        client.setCni("0201/680.183");
+        client.setCodePostal("");
+        client.setSexe("M");
+        client.setVille("BUJUMBURA");
 
+        String reponse =soapPort.ajouterClient(client);
+        System.out.println("Ajout client: "+reponse);
+    }
     public void getClients(){
         ListeClients listeClients = new ListeClients();
 
