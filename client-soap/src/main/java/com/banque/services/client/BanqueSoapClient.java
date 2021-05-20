@@ -15,11 +15,11 @@ public class BanqueSoapClient {
     }
 
     public void getClients(){
+        ListeClients listeClients = new ListeClients();
 
-        ClientsRequest clientsRequest = new ClientsRequest();
+        ListeClientsResponse response = soapPort.listeClients(listeClients,new AuthenticationHeader());
 
-       ClientsRequestResponse clientsRequestResponse= soapPort.clientsRequest(clientsRequest,new AuthenticationHeader());
-       List<Client> clients =clientsRequestResponse.getReturn();
+       List<Client> clients =response.getListeClientsReponse();
         for (Client client:clients) {
             System.out.printf("%s %s %s %s %s %s %s %n",client.getNom(), client.getPrenom(), client.getAdresse(), client.getCni(),client.getCodePostal(),client.getSexe(), client.getVille());
         }
