@@ -13,7 +13,7 @@ public class Client {
     private Integer id;
     private String nom;
     private String prenom;
-    @Column(name = "CNI", nullable = false)
+    @Column(name = "CNI", nullable = false,unique = true)
     private String cni;
     private String adresse;
     private String codePostal;

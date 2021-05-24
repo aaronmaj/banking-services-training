@@ -5,7 +5,6 @@ import java.util.List;
 
 public class BanqueSoapClient {
 
-
     private BanqueWebservice banqueWebservice;
     private BanqueWebserviceSoapPort soapPort;
 
@@ -23,7 +22,7 @@ public class BanqueSoapClient {
         client.setSexe("M");
         client.setVille("BUJUMBURA");
 
-        String reponse =soapPort.ajouterClient(client);
+        String reponse =soapPort.requeteAjoutClient(client);
         System.out.println("Ajout client: "+reponse);
     }
     public void getClients(){
@@ -37,9 +36,22 @@ public class BanqueSoapClient {
         }
 
     }
+    public void creerCompte(){
+        Client client = soapPort.requeteClient("02723/123.74");
+        //Creer un compte par invocation du Web service
+        Compte compte = new Compte();
+        compte.setNumero("21011183");
+        compte.setIntitule(client.getNom()+"" +client.getPrenom());
+        compte.setType(Type.COURANT);
+        compte.setStatus(Status.OUVERT);
+        compte.setCategorie(Categorie.INDIVIDUEL);
+        compte.setSolde(50_000.0);
+        compte.setClient(client);
 
+        String resultat= soapPort.requeteCreerCompte(compte);
+    }
     public static void main(String[] args) {
         BanqueSoapClient client = new BanqueSoapClient();
-        client.getClients();
+        client.creerCompte();
     }
 }

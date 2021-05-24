@@ -1,0 +1,95 @@
+POST /banque-webservice/banking HTTP/1.1
+        Content-Type: text/xml; charset=UTF-8
+        Accept: */*
+        SOAPAction: ""
+        User-Agent: Apache-CXF/3.4.3
+        Cache-Control: no-cache
+        Pragma: no-cache
+        Host: 18.221.54.25:8080
+        Connection: keep-alive
+        Content-Length: 215
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ns2:requeteClient xmlns:ns2="http://soap.services.banque.com">
+            <cni>02723/123.74</cni>
+        </ns2:requeteClient>
+    </soap:Body>
+</soap:Envelope>
+
+
+        HTTP/1.1 200
+        Content-Type: text/xml;charset=UTF-8
+        Content-Length: 401
+        Date: Mon, 24 May 2021 18:46:04 GMT
+        Keep-Alive: timeout=20
+        Connection: keep-alive
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+<soap:Body>
+    <ns2:requeteClientResponse xmlns:ns2="http://soap.services.banque.com">
+        <reponseClient>
+            <adresse>GITEGA</adresse>
+            <cni>02723/123.74</cni>
+            <codePostal>994</codePostal>
+            <id>1</id>
+            <nom>AKIMANA</nom>
+            <prenom>RAISSA</prenom>
+            <sexe>F</sexe>
+            <ville>GITEGA</ville>
+        </reponseClient>
+    </ns2:requeteClientResponse>
+</soap:Body>
+</soap:Envelope>
+
+
+        POST /banque-webservice/banking HTTP/1.1
+        Content-Type: text/xml; charset=UTF-8
+        Accept: */*
+        SOAPAction: ""
+        User-Agent: Apache-CXF/3.4.3
+        Cache-Control: no-cache
+        Pragma: no-cache
+        Host: 18.221.54.25:8080
+        Connection: keep-alive
+        Content-Length: 556
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+<soap:Body>
+    <ns2:requeteCreerCompte xmlns:ns2="http://soap.services.banque.com">
+        <compte>
+            <categorie>INDIVIDUEL</categorie>
+            <client>
+                <adresse>GITEGA</adresse>
+                <cni>02723/123.74</cni>
+                <codePostal>994</codePostal>
+                <id>1</id>
+                <nom>AKIMANA</nom>
+                <prenom>RAISSA</prenom>
+                <sexe>F</sexe>
+                <ville>GITEGA</ville>
+            </client>
+            <intitule>AKIMANA RAISSA</intitule>
+            <numero>21011183</numero>
+            <solde>50000.0</solde>
+            <status>OUVERT</status>
+            <type>COURANT</type>
+        </compte>
+    </ns2:requeteCreerCompte>
+</soap:Body>
+</soap:Envelope>
+
+        HTTP/1.1 200
+        Content-Type: text/xml;charset=UTF-8
+        Content-Length: 266
+        Date: Mon, 24 May 2021 18:46:04 GMT
+        Keep-Alive: timeout=20
+        Connection: keep-alive
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+<soap:Body>
+    <ns2:requeteCreerCompteResponse xmlns:ns2="http://soap.services.banque.com">
+        <reponseCreerCompte>SUCCESS</reponseCreerCompte>
+    </ns2:requeteCreerCompteResponse>
+</soap:Body>
+</soap:Envelope>

@@ -4,7 +4,6 @@ import com.banque.services.core.model.Client;
 import com.banque.services.core.model.Compte;
 import com.banque.services.core.model.Transaction;
 import com.banque.services.core.service.CorebankingService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -25,8 +24,13 @@ public class BanqueWebserviceImpl implements BanqueWebservice{
     }
 
     @Override
+    public Client client(String cni) {
+        return corebankingService.requeteClient(cni);
+    }
+
+    @Override
     public String creerCompte(Compte compte) {
-        corebankingService.creerComptet(compte);
+        corebankingService.creerCompte(compte);
         return "SUCCESS";
     }
 

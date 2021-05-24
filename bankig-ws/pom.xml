@@ -12,8 +12,8 @@
     <artifactId>bankig-ws</artifactId>
     <packaging>war</packaging>
 
-    <name>SOAP Webservice</name>
-    <description>SOAP Web Service</description>
+    <name>banque-webservice</name>
+    <description>Banking SOAP Web Service</description>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>

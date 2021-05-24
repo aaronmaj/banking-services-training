@@ -36,12 +36,18 @@ public class CorebankingService {
     public void creerClient(Client client){
         clientDao.save(client);
     }
-    public void creerComptet(Compte compte){
+    public void creerCompte(Compte compte){
         compteDao.save(compte);
     }
 
     public void supprimerClient(Integer id) {
         Client client = clientDao.findbyId(id).get();
         clientDao.delete(client);
+    }
+    public Client requeteClient(String cni) {
+        return  clientDao.findByCNI(cni);
+    }
+    public Compte requeteCompte(String numero) {
+        return  compteDao.findbyNum(numero).get();
     }
 }

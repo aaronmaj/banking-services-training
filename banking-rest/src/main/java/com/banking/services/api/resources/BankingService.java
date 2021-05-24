@@ -1,4 +1,4 @@
-package com.banking.services.api;
+package com.banking.services.api.resources;
 
 import com.banking.services.api.providers.JwtAuth;
 import com.banque.services.core.model.Client;
@@ -61,12 +61,6 @@ public class BankingService {
         corebankingService.supprimerClient(id);
         return Response.ok().build();
     }
-
-    public Response creerCompte(Compte compte){
-        corebankingService.creerComptet(compte);
-        return Response.ok().build();
-    }
-
 
 
 }

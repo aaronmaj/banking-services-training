@@ -18,6 +18,9 @@ public interface BanqueWebservice {
     @WebMethod(operationName = "requeteAjoutClient", exclude = false)
     @WebResult(name="reponseAjoutClient")
     public abstract String ajouterClient(@WebParam(name = "client") @XmlElement(required = true)Client client);
+    @WebMethod(operationName = "requeteClient", exclude = false)
+    @WebResult(name="reponseClient")
+    public abstract Client client(@WebParam(name = "cni") @XmlElement(required = true)String cni);
     @WebMethod(operationName = "requeteCreerCompte", exclude = false)
     @WebResult(name="reponseCreerCompte")
     public abstract String creerCompte(@WebParam(name = "compte") @XmlElement(required = true)Compte compte);

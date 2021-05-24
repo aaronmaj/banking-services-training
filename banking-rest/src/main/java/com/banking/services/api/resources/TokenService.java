@@ -1,4 +1,4 @@
-package com.banking.services.api;
+package com.banking.services.api.resources;
 
 import com.banking.services.api.model.Credentials;
 import com.banking.services.api.util.KeyGenerator;
@@ -37,9 +37,7 @@ import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
 @Consumes({APPLICATION_JSON, APPLICATION_XML})
 @Transactional
 @Path("/auth")
-@PropertySource("classpath:application.properties")
 public class TokenService {
-
 
     @Context
     private MessageContext context;

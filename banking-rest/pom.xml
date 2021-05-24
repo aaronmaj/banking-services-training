@@ -9,7 +9,7 @@
     </parent>
     <artifactId>bankig-rest</artifactId>
     <packaging>war</packaging>
-    <name>Rest Banking Web Service</name>
+    <name>banking-service</name>
     <description>JAX-RS Banking Web Service</description>
     <properties>
         <jackson.version>1.8.6</jackson.version>

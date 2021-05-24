@@ -24,7 +24,17 @@ public class JpaClientDao  implements ClientDao {
         em.close();
         return people;
     }
+    public Client findByCNI(String cni) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Client client = em.createQuery("select c from Client c where c.cni =?1", Client.class)
+                .setParameter(1,cni)
+                .getSingleResult();
 
+        em.getTransaction().commit();
+        em.close();
+        return client;
+    }
     @Override
     public Optional<Client> findbyId(Integer id) {
         EntityManager em = emf.createEntityManager();
