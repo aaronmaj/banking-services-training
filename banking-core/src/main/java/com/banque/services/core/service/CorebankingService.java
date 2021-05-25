@@ -47,7 +47,15 @@ public class CorebankingService {
     public Client requeteClient(String cni) {
         return  clientDao.findByCNI(cni);
     }
+    public Client client(Integer id) {
+        return  clientDao.findbyId(id).get();
+    }
     public Compte requeteCompte(String numero) {
         return  compteDao.findbyNum(numero).get();
     }
+
+    public Compte compte(Integer id) {
+        return  compteDao.findbyId(id).get();
+    }
+
 }

@@ -1,11 +1,13 @@
 package com.banque.services.core.model;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 
 @Entity
 @Table(name ="Comptes")
 @XmlRootElement(name = "compte")
+@XmlSeeAlso({Client.class})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Compte {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,18 +16,16 @@ public class Compte {
     private String numero;
     @Column(nullable = false)
     private String intitule;
-    @Column(columnDefinition = "ENUM('COURANT', 'EPARGNE', 'DEPOT')")
     @Enumerated(EnumType.STRING)
     private Type type;
-    @Column(columnDefinition = "ENUM('OUVERT','ACTIVE','INACTIVE', 'BLOQUE','CLOTURE')")
     @Enumerated(EnumType.STRING)
     private Status status;
-    @Column(columnDefinition = "ENUM('INDIVIDUEL', 'JOINT', 'INDIVIS')")
     @Enumerated(EnumType.STRING)
     private Categorie categorie;
     private double solde;
     @ManyToOne
     @JoinColumn(name = "client_id")
+    @XmlElement(name = "client")
     private Client client;
 
     public Compte() {

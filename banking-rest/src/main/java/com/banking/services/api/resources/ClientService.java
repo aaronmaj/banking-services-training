@@ -11,9 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.core.*;
 
 @Service
 @Path("/clients")
@@ -22,22 +20,30 @@ public class ClientService {
     {
         corebankingService = new CorebankingService();
     }
-
-    @Path("/")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @GET
-    @JwtAuth
     public Response getClients() {
         return Response.ok(corebankingService.clients()).build();
     }
 
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @GET
+    public Response getClient(@QueryParam("cni") String cni, @Context UriInfo uriInfo) {
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        return Response.ok(corebankingService.requeteClient(queryParams.getFirst("cni"))).build();
+    }
+    @Path("/{id}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @GET
+    public Response getClient(@PathParam("id") Integer id) {
+        return Response.ok(corebankingService.client(id)).build();
+    }
     @POST
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Response creerClient(Client client) {
         corebankingService.creerClient(client);
         return Response.ok(client).build();
-
     }
 
     @DELETE

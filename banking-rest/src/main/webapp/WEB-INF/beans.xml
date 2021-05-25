@@ -8,8 +8,7 @@
     <context:property-placeholder/>
     <context:annotation-config/>
     <context:component-scan  base-package="com.banking.services.*"/>
-    <!--bean class="org.springframework.web.context.support.ServletContextPropertyPlaceholderConfigurer"/-->
-    <bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer"/>
+   <bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer"/>
     <jaxrs:server id="services" address="/banking">
         <jaxrs:serviceBeans>
             <bean class="com.banking.services.api.resources.BankingService"/>
@@ -25,6 +24,7 @@
                 <property name="marshallAsJaxbElement" value="true"/>
             </bean>
             <bean class="com.banking.services.api.providers.JwtAuthFilter"/>
+            <bean id="xmlEntityProvider" class="com.banking.services.api.providers.XMLEntityProvider"/>
         </jaxrs:providers>
     </jaxrs:server>
     <bean id="tokenProvider" class="com.banking.services.api.providers.TokenProvider"/>

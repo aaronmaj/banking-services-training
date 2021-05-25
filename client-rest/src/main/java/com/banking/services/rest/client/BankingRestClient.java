@@ -13,7 +13,7 @@ public class BankingRestClient {
 
     CloseableHttpClient httpclient = HttpClients.createDefault();
 
-    private String url = "http://18.216.144.246:8080/banking-service/banking/api";
+    private String url = "http://18.216.236.172:8080/banking-service/banking/comptes/get?numero=21013120";
 
     public void getClients() throws IOException {
         HttpGet httpGet = new HttpGet(url);

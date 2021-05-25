@@ -1,11 +1,13 @@
 package com.banque.services.core.model;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.time.LocalDate;
 
 @Entity
 @Table(name ="Clients")
+@XmlRootElement(name = "client")
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
