@@ -2,17 +2,17 @@
 
 Example de projet pour une formation dispensée sur les Web Services en Java.  
 Le projet comporte 5 modules
-1. Un module pour la persistance des données : __banking-core__
-2. Un module pour les Web Services de type SOAP : __banking-ws__
-3. Un module pour les Web Services de type REST : __banking-rest__
-4. Un module pour les Clients SOAP : __client-soap__
-5. Un module pour les Clients REST : __client-rest__
+`1. Un module pour la persistance des données : __banking-core__`
+`2. Un module pour les Web Services de type SOAP : __banking-ws__`
+`3. Un module pour les Web Services de type REST : __banking-rest__`
+`4. Un module pour les Clients SOAP : __client-soap__`
+`5. Un module pour les Clients REST : __client-rest__`
 
 ## Mise en place et développement
-Les Web Services utilisent l’implémentation __APACHE CXF__
-Pour chaque projet de Web Service utiliser l'archetype suivant pour generer le squelette du projet:
-`mvn archetype:generate  -Dfilter=org.apache.cxf.archetype:`
-L'execution de la commande prompte une série de choix qui vous guideront à la création du POM de votre projet
+Les Web Services utilisent l’implémentation __APACHE CXF__. 
+Pour chaque projet de Web Service utiliser l'archetype suivant pour generer le squelette du projet:  
+`mvn archetype:generate  -Dfilter=org.apache.cxf.archetype:`  
+L'execution de la commande prompte une série de choix qui vous guideront à la création du POM de votre projet. 
 
 ## Configuration de la base de données 
 Pour le module d’accès aux bases de données`banking-core`, éditez le fichier `src/main/resources/META-INF/persistence.xml` 
