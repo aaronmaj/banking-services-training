@@ -27,8 +27,8 @@ et configurez les informations relatives à votre base de données :
         <class>com.banque.services.core.model.Transaction</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/CoreBanking"/>
-            <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value="a@@812pas"/>
+            <property name="javax.persistence.jdbc.user" value="username"/>
+            <property name="javax.persistence.jdbc.password" value="password"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
