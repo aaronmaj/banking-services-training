@@ -1,6 +1,6 @@
 # Banking-Services
 
-Example de projet pour une formation dispensée sur les Web Services en Java
+Example de projet pour une formation dispensée sur les Web Services en Java.  
 Le projet comporte 5 modules
 1. Un module pour la persistance des données : banking-core
 2. Un module pour les Web Services de type SOAP : banking-ws
