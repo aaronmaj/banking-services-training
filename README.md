@@ -1,4 +1,4 @@
-# Banking-Services
+## banking-services
 
 Example de projet pour une formation dispensée sur les Web Services en Java.  
 Le projet comporte 5 modules
