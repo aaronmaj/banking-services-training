@@ -4,6 +4,8 @@ import com.banking.services.api.providers.JwtAuth;
 import com.banque.services.core.model.Client;
 import com.banque.services.core.model.Compte;
 import com.banque.services.core.service.CorebankingService;
+import org.apache.cxf.common.util.Base64Exception;
+import org.apache.cxf.common.util.Base64Utility;
 import org.apache.cxf.jaxrs.ext.MessageContext;
 import org.apache.cxf.jaxrs.ext.MessageContextImpl;
 import org.apache.cxf.phase.PhaseInterceptorChain;
@@ -38,7 +40,27 @@ public class BankingService {
         httpServletRequest = messageContext.getHttpServletRequest();
 
        if(httpServletRequest.getHeader("Authorization")!=null) {
-           return Response.ok(corebankingService.clients()).build();
+           String authorization = httpServletRequest.getHeader("Authorization");
+
+           String[] parts = authorization.split(" ");
+           if (parts.length != 2 || !"Basic".equals(parts[0])) {
+               return Response.status(401).header("WWW-Authenticate", "Basic").build();
+           }
+           String decodedValue = null;
+           try {
+               decodedValue = new String(Base64Utility.decode(parts[1]));
+           } catch (Base64Exception ex) {
+           }
+           String[] namePassword = decodedValue.split(":");
+           String username = namePassword[0];
+           String password = namePassword[1];
+           if(username!=null&& password!=null) {
+               // Traitement de la requete ici
+               return Response.ok(corebankingService.clients()).build();
+           } else {
+               return Response.status(401).header("WWW-Authenticate", "Basic").build();
+           }
+
        }else {
            return Response.status(Response.Status.UNAUTHORIZED).build();
        }
